@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/claranet/go-zabbix-api v1.0.0
-	github.com/hashicorp/go-version v1.5.0
+	github.com/hashicorp/go-version v1.6.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.17.0
 )
 
