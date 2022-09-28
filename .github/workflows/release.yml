@@ -11,8 +11,10 @@
 #
 name: Test and release
 on:
-  pull_request:
   push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   test:
@@ -21,10 +23,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up Go 1.18.3
+      - name: Set up Go 1.18
         uses: actions/setup-go@v3
         with:
-          go-version: 1.18.3
+          go-version: 1.18
+
+      - name: Format
+        run: go fmt && git diff --exit-code
+
+      - name: Vet
+        run: go vet
+
+      - name: Build
+        run: go build
 
       - name: Test
         run: make test GO111MODULE=on
@@ -38,4 +49,4 @@ jobs:
       gpg-private-key: '${{ secrets.GPG_PRIVATE_KEY }}'
       gpg-private-key-passphrase: ${{ secrets.PASSPHRASE }}
     with:
-      setup-go-version: '1.18.3'
+      setup-go-version: '1.18'
