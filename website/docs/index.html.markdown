@@ -17,7 +17,7 @@ Use the navigation to the left to read about the available resources.
 ## Example Usage
 
 ```hcl
-# Configure the Datadog provider
+# Configure the zabbix provider
 provider "zabbix" {
   user       = var.user
   password   = var.password
@@ -29,7 +29,7 @@ resource "zabbix_host" "default" {
   # ...
 }
 
-# Create a new timeboard
+# Create a new template
 resource "zabbix_template" "default" {
   # ...
 }
